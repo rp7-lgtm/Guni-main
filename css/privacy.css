@@ -1,0 +1,22 @@
+/* Privacy-specific rules. Load after the group's css/style.css. */
+.privacy-page { min-height:100vh; display:flex; flex-direction:column; }
+.privacy-page .privacy-main { width:100%; max-width:1140px; margin-inline:auto; padding:2.5rem 1.5rem 3rem; flex:1; }
+.privacy-page .privacy-article { min-width:0; overflow-wrap:anywhere; }
+.privacy-page .privacy-article > p,.privacy-page .privacy-article section { max-width:75ch; }
+.privacy-page .privacy-article h1 { font-family:var(--font-accent); font-size:clamp(2rem,3vw,2.5rem); margin-bottom:1rem; }
+.privacy-page .privacy-date { font-size:.875rem; margin-bottom:1.5rem; }
+.privacy-page .privacy-article section { margin-top:2rem; scroll-margin-top:1.5rem; }
+.privacy-page .privacy-article h2 { font-family:var(--font-primary); font-size:1.2rem; font-weight:600; line-height:1.5; margin-bottom:.75rem; }
+.privacy-page .privacy-index { position:sticky; top:1.5rem; }
+.privacy-page .privacy-index h2 { font-family:var(--font-primary); font-size:1rem; font-weight:600; background:#e8e6e1; padding:.6rem 1rem; }
+.privacy-page .privacy-index ul { list-style:none; margin:0; padding:0; }
+.privacy-page .privacy-index a { display:block; padding:.5rem; font-size:.9rem; }
+.privacy-page .privacy-main a { color:var(--primary); text-underline-offset:.2em; }
+.privacy-page .privacy-back { display:inline-block; padding:.75rem 0; margin-top:1rem; }
+.privacy-page .privacy-skip { position:absolute; z-index:1100; top:.5rem; left:.5rem; transform:translateY(-200%); background:var(--background); color:var(--primary); padding:.75rem 1rem; }
+.privacy-page .privacy-skip:focus { transform:translateY(0); }
+.privacy-page #policy-title { scroll-margin-top:1.5rem; }
+.privacy-page .site-navbar a:focus-visible { outline:3px solid var(--primary); outline-offset:-4px; }
+.privacy-page .site-footer a:focus-visible { outline:3px solid var(--text-light); outline-offset:3px; }
+@media(max-width:767.98px) { .privacy-page .privacy-index { position:static; } .privacy-page .privacy-main { padding:1.5rem 1rem 2.5rem; } }
+@media print { .privacy-page > header,.privacy-page .site-footer,.privacy-page .privacy-index,.privacy-page .privacy-skip,.privacy-page .privacy-back { display:none!important; } .privacy-page { display:block; min-height:0; } .privacy-page .privacy-main { padding:0; max-width:none; } .privacy-page .privacy-article { width:100%; } }

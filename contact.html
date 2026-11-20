@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contact Us | Guni Store
+  </title>
+  <meta content="n/a." name="description"/>
+  <!-- Load Bootstrap's layout and component styles. -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" rel="stylesheet"/>
+  <!-- Load the fonts used for the site's headings and body text. -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Righteous&amp;display=swap" rel="stylesheet"/>
+  <!-- Apply the site's custom styles. -->
+  <link href="css/styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <nav class="navbar navbar-expand-md site-navbar">
+   <div class="container-fluid">
+    <!--Branding Logo-->
+    <a aria-label="Guni home" class="navbar-brand" href="index.html">
+     <img alt="Guni Store logo" class="logo-primary" src="images/logo-primary.png"/>
+    </a>
+    <!--Bootstrap’s hamburger-button styling-->
+    <button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+     <ul class="navbar-nav ms-auto">
+      <!-- The navigation links -->
+      <li class="nav-item">
+       <a class="nav-link" href="index.html">
+        Home
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="shop.html">
+        Shop
+       </a>
+      </li>
+      <li class="nav-item">
+       <a aria-current="page" class="nav-link active" href="contact.html">
+        Contact
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <main class="container py-4" id="main-content">
+   <h1>
+    Contact Us
+   </h1>
+   <p>
+    Have a question about an order or a product? Complete the form to prepare an email draft. Review and send the draft in your email app; this page does not send messages automatically.
+   </p>
+   <div class="row gx-4 gy-4 align-items-start">
+    <div class="col-12 col-md-7">
+     <form aria-describedby="contact-help" class="contact-form" id="contact-form">
+      <p id="contact-help">
+       All fields are required. Your draft will be addressed to hello@examplewebsite142.com.
+      </p>
+      <div class="form-group">
+       <label for="full-name">
+        Full name
+        <span class="required">
+         (required)
+        </span>
+       </label>
+       <input autocomplete="name" class="form-control" id="full-name" name="full_name" required="" type="text"/>
+      </div>
+      <div class="form-group">
+       <label for="email">
+        Email address
+        <span class="required">
+         (required)
+        </span>
+       </label>
+       <input autocomplete="email" class="form-control" id="email" name="email" required="" type="email"/>
+      </div>
+      <div class="form-group">
+       <label for="topic">
+        Topic
+        <span class="required">
+         (required)
+        </span>
+       </label>
+       <select class="form-select" id="topic" name="topic" required="">
+        <option value="">
+         Choose a topic
+        </option>
+        <option value="order">
+         A question about an order
+        </option>
+        <option value="product">
+         A question about a product
+        </option>
+        <option value="other">
+         Something else
+        </option>
+       </select>
+      </div>
+      <div class="form-group">
+       <label for="message">
+        Message
+        <span class="required">
+         (required)
+        </span>
+       </label>
+       <p id="message-hint">
+        Please do not include passwords or payment details.
+       </p>
+       <textarea aria-describedby="message-

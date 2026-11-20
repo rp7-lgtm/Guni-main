@@ -1,0 +1,479 @@
+/*
+  ============================================================
+  MODULE 5: styles.css for the Contact Page
+  MMS 142: Internet Technologies and Web Development
+  ============================================================
+  A CSS rule has three parts:
+      selector { property: value; }
+  Example:   h1 { color: #222222; }
+  Comments in CSS start with slash star and end with star slash.
+
+  This file is written "mobile first": the base styles are for
+  phones, and a media query near the end adds changes for wider screens.
+*/
+
+
+/* ------------------------------------------------------------
+   1. VARIABLES
+   Variables store a value once so you can reuse it everywhere.
+   Change a color here and the whole page updates.
+   Contrast ratios are against white (WCAG needs 4.5:1 for text).
+   ------------------------------------------------------------ */
+:root {
+  --primary: #005596;      /* brand maroon, contrast 10.9:1 on white */
+  --primary-light:rgba(0, 86, 152, 0.7); /*light primary for hover effect*/
+  --text: #070606;         /* main text, contrast 15.9:1 on white */
+  --text-light: #FFFCF6;   /* light cream text */
+  --muted: #595959;        /* hints and small text, about 7:1 on white */
+  --background: #FFFCF6; /* light cream background */
+  --surface: #FFFFFF ;      /* light panel color */
+  --border: #070606;       /* form borders, 4.5:1 so fields are easy to see */
+  --error: #DF3A3A;       /* red for errors, 4.5:1 on white */
+  --radius: 0.5rem;
+  --accent: #DF3A3A;       /* accent color for branding */
+}
+
+.site-footer,
+footer.site-footer {
+  background-color: var(--text);
+  color: #ffffff;
+}
+/* ------------------------------------------------------------
+   2. RESET AND BASE
+   ------------------------------------------------------------ */
+
+/* box-sizing makes width include padding and border, so sizes act as expected. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* The body sets the default font, size, color and spacing for the whole page. */
+body {
+  margin: 0;                         /* removes the browser's default gap */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;                   /* 1rem = the visitor's own text size (usually 16px) */
+  line-height: 1.6;                  /* space between lines makes reading easier */
+  color: var(--text);
+  background: var(--background);
+}
+
+h1, h2 {
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.375rem; }
+
+p { margin: 0 0 1rem; }
+
+/* Links: keep the underline so they do not rely on color alone. */
+a {
+  color: var(--primary);
+}
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Focus style: shows keyboard users where they are. Never remove it without a replacement. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* On the dark header, a dark outline would disappear, so use white there. */
+.site-header a:focus-visible {
+  outline-color: #FFFFFF;
+}
+
+
+/* ------------------------------------------------------------
+   3. HEADER AND NAVIGATION
+   Flexbox lines up items in a row or column.
+   ------------------------------------------------------------ */
+   
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--background);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-top: 15px solid var(--accent);
+
+}
+ 
+.site-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.logo-header {
+  max-width: 180px;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+
+/* The navigation section */
+ 
+.nav-list { /* The navigation links are in a list, but we don't want the bullets. */
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a[aria-current="page"] { /* This highlights the current page in the navigation */
+  color: var(--text-light);
+  background-color: var(--primary);
+  text-decoration: underline;
+}
+
+
+.nav-list li a {    /* This allows for the navigation links to have borders and span the width */
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 20px 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.nav-list li:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-dark);
+}
+
+.nav-list li:hover a {
+  color: var(--text-light) !important;
+  text-decoration: underline;
+}
+/* Desktop */
+.menu-toggle {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   4. MAIN CONTENT
+   ------------------------------------------------------------ */
+main {
+  max-width: 64rem;                  /* keeps lines from getting too wide */
+  margin: 0 auto;                    /* auto left and right centers the block */
+  padding: 1.5rem 1rem;
+}
+
+.intro {
+  color: var(--muted);
+}
+
+/* Phones: form first, contact details below, with space between. */
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+
+/* ------------------------------------------------------------
+   5. THE FORM
+   ------------------------------------------------------------ */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;                    /* puts the label on its own line above the field */
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+/* The "(required)" word is smaller and not bold. */
+.required {
+  font-weight: normal;
+  color: var(--muted);
+}
+
+.hint {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Style all fields together by listing selectors with commas. */
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;                       /* fills the form width */
+  padding: 0.75rem;                  /* roomy fields are easier to tap */
+  font: inherit;                     /* uses the same font as the page */
+  color: var(--text);
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+
+textarea {
+  resize: vertical;                  /* visitors can make it taller, not wider */
+}
+
+/* Show a red border only after the visitor has typed something wrong. */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: var(--error);
+}
+
+
+/* ------------------------------------------------------------
+   6. BUTTON
+   ------------------------------------------------------------ */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font: inherit;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;                   /* shows the hand pointer */
+}
+
+/* Hover gives feedback when the mouse is over the button. */
+.button:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+
+/* ------------------------------------------------------------
+   7. CONTACT DETAILS (ASIDE)
+   ------------------------------------------------------------ */
+.contact-info {
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+address {
+  font-style: normal;                /* the browser makes address italic by default */
+}
+
+
+/* ------------------------------------------------------------
+   8. FOOTER
+   ------------------------------------------------------------ */
+.site-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: #070606;
+  color: #FFFCF6;
+}
+
+.site-footer .footer-logo {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.site-footer .footer-logo img {
+  display: block;
+  width: 64px;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.site-footer .footer-license {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  text-align: right;
+}
+
+.site-footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer .footer-links li + li {
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid #FFFCF6;
+}
+
+.site-footer .footer-links a {
+  color: #FFFCF6;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.site-footer .footer-links a:hover,
+.site-footer .footer-links a:focus-visible {
+  text-decoration: underline;
+}
+
+.site-footer a:focus-visible {
+  outline-color: #FFFCF6;
+}
+
+.site-footer .footer-license p {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 35.99em) {
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+.site-footer .footer-license {
+  align-items: flex-start;
+  text-align: left;
+}  
+
+.site-footer .footer-links {
+  justify-content: flex-start;
+}
+}
+
+
+/* ------------------------------------------------------------
+   9. LARGER SCREENS
+   A media query applies its rules only when the condition is true.
+   Here: when the screen is at least 48em wide (about 768px, a tablet).
+   em is used so it also works when visitors enlarge their text.
+   ------------------------------------------------------------ */
+@media (min-width: 48em) {
+
+  /* Put the store name and menu on one row. */
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;  /* name on the left, menu on the right */
+    align-items: center;
+    padding: 0 0 0 2rem;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  /* Form on the left, contact details on the right. */
+  .page-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contact-form {
+    flex: 2;                         /* takes two parts of the space */
+  }
+
+  .contact-info {
+    flex: 1;                         /* takes one part */
+  }
+}
+
+/* ------------------------------------------------------------
+   10. REDUCED MOTION
+   Respects visitors who ask their device to limit animation.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* Keep Contact page logos at the intended sizes. */
+.site-header img {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+}
+
+.site-footer img {
+  display: block;
+  width: 64px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Add space around the footer content. */
+.site-footer {
+  padding: 1rem 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  margin: 0;
+}
+
+/* Style the actual links, not just their list container. */
+.site-footer a {
+  color: var(--text-light);
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-links {
+  flex-wrap: wrap;
+}
+
+.footer-license p {
+  margin: 0;
+}
+
+/* Keep the footer within narrow screens. */
+@media (max-width: 47.99em) {
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-license {
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+
+main h1,
+  .contact-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+
+main > .intro {
+  margin-bottom: 1.5rem;
+}

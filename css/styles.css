@@ -1,0 +1,321 @@
+/*
+  ============================================================
+  GUNI PAGES
+  CSS Stylesheet
+  ============================================================
+*/
+
+/* 1. VARIABLES */
+:root {
+  --primary: #005596; /* Standing Waters; 7.48:1 contrast on #FFFCF6 */
+  --primary-light: rgba(0, 86, 152, 0.7);
+  --text-dark: #070606; /* 19.76:1 contrast on #FFFCF6 */
+  --text-light: #FFFCF6;
+  --muted: #cccaca95; /* translucent panel background; do not use for text on cream */
+  --background: #FFFCF6;
+  --background-dark: #070606;
+  --border: #070606;
+  --error: #DF3A3A; /* invalid-field borders; not normal-size error text */
+  --accent: #DF3A3A;
+  --font-primary: 'Poppins', sans-serif;
+  --font-accent: 'Righteous', sans-serif;
+}
+
+/* 2. RESET AND BASE */
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+}
+h1, h2 { line-height: 1.25; margin: 0 0 0.75rem; }
+h1 { font-size: 2rem; font-family: var(--font-primary); }
+h2 { font-size: 1.375rem; font-family: var(--font-accent); }
+p { margin: 0 0 1rem; }
+.text-lg { font-size: clamp(1.125rem, 1.5vw, 1.375rem); line-height: 1.7; }
+.text-xl { font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.5; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+.site-header a:focus-visible { outline-color: var(--background); }
+
+/* 3. HEADER AND NAVIGATION */
+.site-navbar {
+  --bs-navbar-padding-y: 0;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-top: 15px solid var(--accent);
+}
+.site-navbar .navbar-collapse { align-self: stretch; align-items: stretch; }
+.site-navbar .container-fluid { padding: 0rem; }
+.site-navbar .logo-primary { margin: 0 0 0 2rem; }
+.site-navbar .navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px 30px;
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+}
+.site-navbar .navbar-nav .nav-link.active,
+.site-navbar .navbar-nav .nav-link[aria-current="page"] {
+  color: var(--text-light);
+  background-color: var(--primary);
+  text-decoration: underline;
+  font-weight:bold;
+}
+.site-navbar .navbar-nav .nav-link:not(.active):not([aria-current="page"]):hover {
+  color: var(--text-dark);
+  background-color: var(--primary-light);
+  text-decoration: underline;
+}
+.site-name { margin: 0; font-size: 1.25rem; font-weight: bold; }
+.site-navbar .navbar-toggler { border: 1px solid var(--border); margin-right: 1rem; }
+.logo-primary {
+  max-width: 180px;
+  height: auto;
+  margin-top: -1rem;
+  margin-bottom: -1.5rem;
+  margin-left: -2rem;
+}
+
+/* 4. HOME PAGE */
+main { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1rem; }
+.intro { color: var(--muted); }
+.page-layout { display: flex; flex-direction: column; gap: 2rem; }
+.hero-background { padding: 0.5rem; background-color: var(--muted); }
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: left;
+}
+.hero-description { text-align: left; }
+.hero-cta { display: block; width: fit-content; margin: 0; }
+.link-bold { color: var(--text-dark); font-weight: bold; }
+@media (max-width: 47.99em) {
+  .product-card { margin-left: 2rem; }
+}
+.about-section { margin-top: 7rem; padding: 2rem; background-color: var(--muted); }
+
+/* 5. THE FORM */
+.form-group { margin-bottom: 1.25rem; }
+label { display: block; margin-bottom: 0.25rem; font-weight: bold; }
+.required { font-weight: normal; color: var(--muted); }
+.hint { margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--muted); }
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font: inherit;
+  color: var(--text-dark);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+textarea { resize: vertical; }
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid { border-color: var(--error); }
+
+/* 6. BUTTONS */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  color: #FFFFFF;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.button-primary {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-accent);
+  color: var(--text-dark);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.button-primary:hover {
+  color: var(--text-light);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* 7. CONTACT DETAILS */
+.contact-info { padding: 1rem 1.25rem; background: var(--muted); border-radius: var(--radius); }
+address { font-style: normal; }
+
+/* 8. FOOTER */
+.site-footer,
+footer.site-footer { color: var(--text-light); background-color: var(--background-dark); }
+.site-footer .link-light { text-decoration: none; }
+.site-footer .link-light:hover,
+.site-footer .link-light:focus-visible { text-decoration: underline; }
+.site-footer .container-fluid { padding: 0; }
+.logo-secondary { width: clamp(5rem, 12vw, 11.25rem); max-width: 60%; height: auto; margin-left: 1rem; }
+
+/* 9. LARGER SCREENS */
+@media (min-width: 48em) {
+  .hero-title,
+  .hero-description { text-align: center; }
+  .hero-cta { margin-inline: auto; }
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  .site-navbar .container-fluid { padding: 0 2rem; }
+  .site-footer .container-fluid { padding: 0 2rem; }
+  .site-navbar .navbar-collapse { margin-right: -2rem; }
+  .page-layout { flex-direction: row; align-items: flex-start; }
+  .contact-form { flex: 2; }
+  .contact-info { flex: 1; }
+}
+
+/* 10. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Merged Privacy layout. */
+.privacy-page { min-height:100vh; display:flex; flex-direction:column; }
+.privacy-page .privacy-main { width:100%; max-width:1140px; margin-inline:auto; padding:2.5rem 1.5rem 3rem; flex:1; }
+.privacy-page .privacy-article { min-width:0; overflow-wrap:anywhere; }
+.privacy-page .privacy-article > p,.privacy-page .privacy-article section { max-width:75ch; }
+.privacy-page .privacy-article h1 { font-family:var(--font-accent); font-size:clamp(2rem,3vw,2.5rem); margin-bottom:1rem; }
+.privacy-page .privacy-date { font-size:.875rem; margin-bottom:1.5rem; }
+.privacy-page .privacy-article section { margin-top:2rem; scroll-margin-top:1.5rem; }
+.privacy-page .privacy-article h2 { font-family:var(--font-primary); font-size:1.2rem; font-weight:600; line-height:1.5; margin-bottom:.75rem; }
+.privacy-page .privacy-index { position:sticky; top:1.5rem; }
+.privacy-page .privacy-index h2 { font-family:var(--font-primary); font-size:1rem; font-weight:600; background:#e8e6e1; padding:.6rem 1rem; }
+.privacy-page .privacy-index ul { list-style:none; margin:0; padding:0; }
+.privacy-page .privacy-index a { display:block; padding:.5rem; font-size:.9rem; }
+.privacy-page .privacy-main a { color:var(--primary); text-underline-offset:.2em; }
+.privacy-page .privacy-back { display:inline-block; padding:.75rem 0; margin-top:1rem; }
+.privacy-page .privacy-skip { position:absolute; z-index:1100; top:.5rem; left:.5rem; transform:translateY(-200%); background:var(--background); color:var(--primary); padding:.75rem 1rem; }
+.privacy-page .privacy-skip:focus { transform:translateY(0); }
+.privacy-page #policy-title { scroll-margin-top:1.5rem; }
+.privacy-page .site-navbar a:focus-visible { outline:3px solid var(--primary); outline-offset:-4px; }
+.privacy-page .site-footer a:focus-visible { outline:3px solid var(--text-light); outline-offset:3px; }
+@media(max-width:767.98px) {
+  .privacy-page .privacy-index { position:static; }
+  .privacy-page .privacy-main { padding:1.5rem 1rem 2.5rem; }
+}
+@media print {
+  .privacy-page > header,.privacy-page .site-footer,.privacy-page .privacy-index,.privacy-page .privacy-skip,.privacy-page .privacy-back { display:none!important; }
+  .privacy-page { display:block; min-height:0; }
+  .privacy-page .privacy-main { padding:0; max-width:none; }
+  .privacy-page .privacy-article { width:100%; }
+}
+
+/* Shared navigation hover and current-page states. */
+.site-navbar .navbar-nav .nav-link:hover,
+.site-navbar .navbar-nav .nav-link:focus-visible,
+.site-navbar .navbar-nav .nav-link.active,
+.site-navbar .navbar-nav .nav-link[aria-current="page"] {
+  color:var(--text-light); background-color:var(--primary); text-decoration:underline;
+}
+.privacy-page .site-navbar .navbar-nav .nav-link:focus-visible {
+  outline:3px solid var(--text-light); outline-offset:-4px;
+}
+.site-footer a[aria-current="page"]:not(:hover):not(:focus-visible) { text-decoration:none; }
+
+/* Privacy footer: no strip; both lines share the same right edge. */
+body.privacy-page { padding-bottom:0; }
+.site-footer .privacy-footer-details { text-align:right; padding-inline:1rem; }
+.site-footer .privacy-footer-links {
+  list-style:none; display:flex; flex-wrap:wrap; align-items:center;
+  justify-content:flex-end; gap:.5rem; padding:0; margin:0 0 .25rem;
+}
+.site-footer .privacy-footer-copyright { margin:0; padding:0; text-align:right; }
+
+/* Shared keyboard focus. */
+.site-navbar .navbar-nav .nav-link:focus-visible { outline:3px solid var(--text-light); outline-offset:-4px; }
+.site-footer a:focus-visible { outline:3px solid var(--text-light); outline-offset:3px; }
+
+/* Shop-only layout: larger images without changing homepage cards. */
+.shop-page { min-height:100vh; display:flex; flex-direction:column; padding-bottom:0; }
+.shop-page .shop-main { width:100%; max-width:1140px; flex:1; padding:2rem 1.5rem 3rem; margin-inline:auto; }
+.shop-page .shop-main h2,.shop-page .shop-main h3 { font-family:var(--font-accent); }
+.shop-page .shop-product { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:2.5rem; align-items:center; padding:2.5rem 0; border-bottom:1px solid var(--border); }
+.shop-page .shop-product:last-child { border-bottom:0; }
+.shop-page .shop-product-image { display:block; width:100%; height:auto; max-height:34rem; object-fit:contain; }
+.shop-page .shop-product-details { min-width:0; overflow-wrap:anywhere; }
+.shop-page .shop-price { font-weight:600; }
+.shop-page .shop-inquiry { display:inline-block; text-decoration:none; }
+.shop-page .shop-inquiry:focus-visible { outline:3px solid var(--primary); outline-offset:4px; }
+.shop-page .shop-skip { position:absolute; top:.5rem; left:.5rem; z-index:1100; transform:translateY(-200%); background:var(--background); padding:.75rem 1rem; }
+.shop-page .shop-skip:focus { transform:translateY(0); }
+
+/* Product names use the brand's Righteous display font. */
+.product-name,
+.shop-page .shop-product-details h3,
+.product-info h1,
+.product-page .product-info h1 {
+  font-family:var(--font-accent);
+}
+
+/* Everyday Comfort Tee product images */
+.product-card .product-image {
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:var(--background);
+}
+.product-card .product-image img,
+.everyday-product-image,
+.product-gallery .product-image img {
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:36rem;
+  object-fit:contain;
+}
+.product-card .product-image img { aspect-ratio:1 / 1; }
+.everyday-product-image { height:auto; max-width:32rem; margin-inline:auto; }
+.tee-product-image {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:32rem;
+  max-height:36rem;
+  margin-inline:auto;
+  object-fit:contain;
+}
+.product-gallery { max-width:32rem; margin-inline:auto; }
+.product-gallery .product-image { width:100%; aspect-ratio:1 / 1; overflow:hidden; background:var(--background); }
+.thumbnail-list { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem; }
+.thumbnail { width:5rem; padding:.25rem; border:1px solid var(--border); background:var(--background); }
+.thumbnail img { display:block; width:100%; aspect-ratio:1 / 1; object-fit:contain; }
+.shop-page #collection { scroll-margin-top:1.5rem; }
+@media(max-width:767.98px) {
+  .shop-page .shop-product { grid-template-columns:1fr; gap:1.5rem; }
+  .shop-page .shop-main { padding:1.5rem 1rem 2.5rem; }
+}
+
+/* Accessible supporting text; preserves existing muted panel backgrounds. */
+.intro,
+.required,
+.hint {
+  color: #595959;
+}
+/* Product size selection: visible cue in addition to color. */
+#order-form .btn-check:checked + .btn {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.2em;
+  font-weight: 700;
+}
